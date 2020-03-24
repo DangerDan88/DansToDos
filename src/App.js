@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import List from "./List";
-export default class App extends Component() {
+class App extends Component {
   constructor(props) {
     super(props);
+    this.onSubmit = this.onSubmit.bind(this);
     this.state = {
       toDo: "",
       items: []
@@ -27,8 +28,8 @@ export default class App extends Component() {
 
   render() {
     return (
-      <div>
-        <form className="App" onSubmit={this.onSubmit}>
+      <div className="App">
+        <form className="bg-grey-300" onSubmit={this.onSubmit}>
           <input value={this.state.toDo} onChange={this.onChange} />
           <button>Add ToDo:</button>
         </form>
@@ -37,3 +38,5 @@ export default class App extends Component() {
     );
   }
 }
+
+export default App;
