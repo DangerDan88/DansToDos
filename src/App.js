@@ -25,22 +25,37 @@ class App extends Component {
     });
   };
 
+  deleteItem(id) {
+    this.setState(prevState => ({
+      items: prevState.items.filter(el => el !== id)
+    }));
+  }
+
   render() {
     return (
       <div className="App">
-        <div className="flex justify-center bg-gray-500 text-xl">
-          <h1>To Do list</h1>
+        <div className="flex justify-center mt-4 bg-green-700 text-3xl">
+          <h1 className="mt-2 p-2">To Do list</h1>
         </div>
-        <form className="bg-gray-100 flex shadow-md" onSubmit={this.onSubmit}>
-          <input
-            className="form-input mt-1 block w-full bg-transparent"
-            value={this.state.toDo}
-            onChange={this.onChange}
-          />
-          <button className="bg-blue-500 hover:bg-red-500">Add ToDo:</button>
-        </form>
+        <form className="flex p-4" onSubmit={this.onSubmit}>
+          <label className="block">
+            {" "}
+            Add Items:
+            <input
+              className="form-input mt-1 block bg-transparent"
+              value={this.state.toDo}
+              onChange={this.onChange}
+            />
+          </label>
 
-        <List items={this.state.items} />
+          <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white p-2 border border-blue-500 hover:border-transparent rounded">
+            Submit
+          </button>
+        </form>
+        <div className="container w-full bg-blue-500">
+          <h2 className="flex text-2xl justify-center">Items:</h2>{" "}
+          <List items={this.state.items} />
+        </div>
       </div>
     );
   }
