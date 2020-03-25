@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./App.css";
 import List from "./List";
 class App extends Component {
   constructor(props) {
@@ -29,10 +28,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <form className="bg-grey-300" onSubmit={this.onSubmit}>
-          <input value={this.state.toDo} onChange={this.onChange} />
-          <button>Add ToDo:</button>
+        <div className="flex justify-center bg-gray-500 text-xl">
+          <h1>To Do list</h1>
+        </div>
+        <form className="bg-gray-100 flex shadow-md" onSubmit={this.onSubmit}>
+          <input
+            className="form-input mt-1 block w-full bg-transparent"
+            value={this.state.toDo}
+            onChange={this.onChange}
+          />
+          <button className="bg-blue-500 hover:bg-red-500">Add ToDo:</button>
         </form>
+
         <List items={this.state.items} />
       </div>
     );
